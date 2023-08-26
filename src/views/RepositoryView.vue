@@ -8,7 +8,9 @@ defineProps(
     }
 )
 
-const usernameGithub = ref()
+const usernameGithub = ref('')
+var userData = reactive({})
+/**
 let userData = reactive({
         "login": null,
         "id": null,
@@ -24,7 +26,7 @@ let userData = reactive({
         "following": null,
         "created_at": null,
       })
-
+ */
 const apiReposUrl = ref()
 let repoData = reactive([{}])
 
@@ -131,57 +133,71 @@ repoData = [
   }]
 }
 
-function submitUsername(){
-    userData = {
-  "login": "richmont",
-  "id": 8619725,
-  "node_id": "MDQ6VXNlcjg2MTk3MjU=",
-  "avatar_url": "https://avatars.githubusercontent.com/u/8619725?v=4",
-  "gravatar_id": "",
-  "url": "https://api.github.com/users/richmont",
-  "html_url": "https://github.com/richmont",
-  "followers_url": "https://api.github.com/users/richmont/followers",
-  "following_url": "https://api.github.com/users/richmont/following{/other_user}",
-  "gists_url": "https://api.github.com/users/richmont/gists{/gist_id}",
-  "starred_url": "https://api.github.com/users/richmont/starred{/owner}{/repo}",
-  "subscriptions_url": "https://api.github.com/users/richmont/subscriptions",
-  "organizations_url": "https://api.github.com/users/richmont/orgs",
-  "repos_url": "https://api.github.com/users/richmont/repos",
-  "events_url": "https://api.github.com/users/richmont/events{/privacy}",
-  "received_events_url": "https://api.github.com/users/richmont/received_events",
-  "type": "User",
-  "site_admin": false,
-  "name": "Richelmy Monteiro",
-  "company": null,
-  "blog": "",
-  "location": "Brazil",
-  "email": null,
-  "hireable": null,
-  "bio": null,
-  "twitter_username": null,
-  "public_repos": 33,
-  "public_gists": 2,
-  "followers": 28,
-  "following": 57,
-  "created_at": "2014-09-01T21:18:42Z",
-  "updated_at": "2023-08-25T17:09:16Z"
-}
+function submitUsername(usuario){
+  if (usuario=="richmont"){
+    console.log(usuario)
+    let jsonUser =  {
+      "login": "richmont",
+      "id": 8619725,
+      "node_id": "MDQ6VXNlcjg2MTk3MjU=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8619725?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/richmont",
+      "html_url": "https://github.com/richmont",
+      "followers_url": "https://api.github.com/users/richmont/followers",
+      "following_url": "https://api.github.com/users/richmont/following{/other_user}",
+      "gists_url": "https://api.github.com/users/richmont/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/richmont/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/richmont/subscriptions",
+      "organizations_url": "https://api.github.com/users/richmont/orgs",
+      "repos_url": "https://api.github.com/users/richmont/repos",
+      "events_url": "https://api.github.com/users/richmont/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/richmont/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": "Richelmy Monteiro",
+      "company": null,
+      "blog": "",
+      "location": "Brazil",
+      "email": null,
+      "hireable": null,
+      "bio": null,
+      "twitter_username": null,
+      "public_repos": 33,
+      "public_gists": 2,
+      "followers": 28,
+      "following": 57,
+      "created_at": "2014-09-01T21:18:42Z",
+    }
+    userData.id = jsonUser.id
+    userData.login = jsonUser.login
+    userData.avatar_url = jsonUser.avatar_url    
+    userData.url = jsonUser.url    
+    userData.html_url = jsonUser.html_url    
+    userData.repos_url = jsonUser.repos_url
+    userData.name = jsonUser.name    
+    userData.company = jsonUser.company
+    userData.bio = jsonUser.bio
+    userData.public_repos = jsonUser.public_repos
+    userData.followers = jsonUser.followers
+    userData.following = jsonUser.following
+    userData.created_at = jsonUser.created_at
+
 
     apiReposUrl.value = userData.repos_url
     getRepoData(apiReposUrl.value)
-    
+}else{
+  console.log("usuário inválido")
+}
     
 }
-
-
-
 </script>
 
 <template>
     <div class="input-username">
         <input v-model="usernameGithub" placeholder="Type github username">
-        <button @click="submitUsername(usernameGithub.value);">Consultar</button>
-        <button @click="console.log('Botão clicado')">registrar botão</button>
+        <button @click.prevent="submitUsername(usernameGithub);">Consultar</button>
+        
     </div>
     <div class="user-data" v-if="userData.id != undefined">
         <UserItem 

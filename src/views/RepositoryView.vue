@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, reactive } from 'vue'
+import { ref, reactive } from 'vue'
 import RepositoryList from '../components/RepositoryList.vue'
 import UserItem from '../components/UserItem.vue'
 defineProps(
@@ -10,23 +10,7 @@ defineProps(
 
 const usernameGithub = ref('')
 var userData = reactive({})
-/**
-let userData = reactive({
-        "login": null,
-        "id": null,
-        "avatar_url": null,
-        "url": null,
-        "html_url": null,
-        "repos_url": null,
-        "name": null,
-        "company": null,
-        "bio": null,
-        "public_repos": null,
-        "followers": null,
-        "following": null,
-        "created_at": null,
-      })
- */
+
 const apiReposUrl = ref()
 let repoData = reactive([{}])
 
@@ -187,7 +171,20 @@ function submitUsername(usuario){
     apiReposUrl.value = userData.repos_url
     getRepoData(apiReposUrl.value)
 }else{
-  console.log("usuário inválido")
+  userData.id = null
+    userData.login = null
+    userData.avatar_url = null
+    userData.url = null
+    userData.html_url = null
+    userData.repos_url = null
+    userData.name = null
+    userData.company = null
+    userData.bio = null
+    userData.public_repos = null
+    userData.followers = null
+    userData.following = null
+    userData.created_at = null
+    console.log("usuário inválido")
 }
     
 }

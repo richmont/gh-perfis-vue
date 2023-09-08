@@ -310,11 +310,12 @@ function submitUsername(usuario){
 </script>
 
 <template>
-    <div class="input-username">
+  <div class="input-username">
         <input @keydown.enter="submitUsername(usernameGithub)" v-model="usernameGithub" placeholder="Type github username">
         <button @click="submitUsername(usernameGithub);">Consultar</button>
-        
     </div>
+  <div class="container-data">
+    
     <div class="user-data" v-if="userData.id != null">
         <UserItem 
         :id="userData.id"
@@ -329,9 +330,41 @@ function submitUsername(usuario){
         />
     </div>
     
-    <div v-if="repoData.length > 0">
+    <div class="repositories" v-if="repoData.length > 0">
       
       <RepositoryList :repoList="repoData[0]"/>
     </div>
-
+  </div>
 </template>
+<style>
+.input-username{
+  margin-bottom: 2px;
+}
+.container-data, .input-username{
+  display: flex
+}
+.container-data{
+  flex-direction: row;
+  justify-content: left;
+}
+.input-username{
+  justify-content: center;
+  padding: 2px;
+}
+
+.user-data, .repository{
+  border-style: groove;
+  border-radius: 5px;
+  
+  height: fit-content;
+  flex-direction: column;
+  padding: 5px;
+}
+.user-data{
+width: 30%;
+}
+
+.repositories{
+  
+}
+</style>

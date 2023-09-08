@@ -19,13 +19,19 @@ defineProps(
 </script>
 <template>
     <div class="user-item">
-        <p>id: {{ id }}</p>
-        <p>login: {{ login }}</p>
-        <p>bio: {{ bio }}</p>
+        <p class="user-id">id: {{ id }}</p>
+        <p class="user-login">login: {{ login }}</p>
+        <p class="user-bio">bio: {{ bio }}</p>
         <UserAvatar :avatar_url="avatar" />
-        <p>url: {{ url }}</p>
-        <p>description: {{ description }}</p>
+        <p class="user-url">url: {{ url }}</p>
+        <p class="user-description">description: {{ description }}</p>
         
     </div>
 
 </template>
+<style>
+.user-item{
+    align-content: space-around;
+    
+}
+</style>

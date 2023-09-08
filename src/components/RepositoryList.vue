@@ -10,7 +10,7 @@ defineProps(
 
 <template>
     <div class="repository-list">
-        <div v-for="repo in repoList" :key="repo.id">
+        <div class="repository-item" v-for="repo in repoList" :key="repo.id">
             <RepositoryItem 
             :id="repo.id" 
             :name="repo.name"
@@ -23,3 +23,9 @@ defineProps(
         </div>
     </div>
 </template>
+<style>
+.repository-list{
+    
+    flex-direction: row;
+}
+</style>

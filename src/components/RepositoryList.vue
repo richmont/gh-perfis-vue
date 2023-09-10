@@ -27,8 +27,7 @@ defineProps(
 .repository-list{
     display: flex;
     flex-direction: column;
+    padding-left: 30px;
+}
 
-}
-.repository-item{
-}
 </style>

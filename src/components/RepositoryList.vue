@@ -14,7 +14,7 @@ defineProps(
             <RepositoryItem 
             :id="repo.id" 
             :name="repo.name"
-            :url="repo.url"
+            :url="repo.html_url"
             :description="repo.description"
             :archived="repo.archived"
             :disabled="repo.disabled"
@@ -25,7 +25,10 @@ defineProps(
 </template>
 <style>
 .repository-list{
-    
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
+
+}
+.repository-item{
 }
 </style>

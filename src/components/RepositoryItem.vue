@@ -14,7 +14,6 @@ defineProps(
 )
 </script>
 <template>
-    
         <p>id: {{ id }}</p>
         <p>name: {{ name }}</p>
         <p>url: {{ url }}</p>
@@ -22,6 +21,5 @@ defineProps(
         <p>archived: {{ archived }}</p>
         <p>disabled: {{ disabled }}</p>
         <p>language: <LanguageIcon :language="language"/></p>
-    
 
 </template>

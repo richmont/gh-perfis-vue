@@ -42,13 +42,17 @@ function setIcon(lang){
 
 </script>
 <template>
-    <div class="language-icon">
+    
+    <div class="language-icon" v-if="language">
         <font-awesome-icon :icon="setIcon(language)" />
         {{ language }}
     </div>
+    <div class="language-icon" v-else>
+        <p>None</p>
+    </div>
 </template>
 <style>
-.language-icon{
-    font-size: 30px;
+font-awesome-icon{
+    font-size: 15px;
 }
 </style>

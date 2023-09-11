@@ -44,6 +44,7 @@ defineProps(
 <style>
 
 .repo{
+    
     display:flex;
     padding-bottom: 5px;
     border-bottom-style: groove;
@@ -51,7 +52,8 @@ defineProps(
     justify-content: space-between;
 }
 .metadata-repo-container{
-    align-self: flex-end;
+    flex-basis: 100px;
+    align-items: flex-end;
     padding-right: 5px;
 }
 
